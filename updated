@@ -1,0 +1,68 @@
+//state
+const state = {
+    numberBank: [],
+    odds: [],
+    evens: [],
+};
+
+//References
+const form = document.querySelector('form');
+//  code below did not work? pls advise VVs
+// const inputValue = form.elements.number.value;
+const output = document.querySelector('output');
+
+form.addEventListener("submit", onFormSubmit)
+
+
+// when button is clicked
+//value from output is added into number bank
+function onFormSubmit(event) {
+    event.preventDefault()
+    const numberInput = document.querySelector('input')
+    console.log(numberInput.value);
+    state.numberBank.push(numberInput.value);
+    console.log(state)
+    output.append((state.numberBank[0]))
+
+    console.log(state.numberBank[0])
+    // i appended it to output but should I have updated it from state?
+    // output.append(numberInput.value);
+}
+
+const buttonOne = document.querySelector('#sortOne')
+buttonOne.addEventListener('click', sortOneNum)
+
+const buttonAll = document.querySelector('#sortAll')
+buttonAll.addEventListener('click', sortAll)
+//render... render what? replace children?
+function render() {
+    for (let index = 0; index < numberBank.length; index++) {
+        const element = numberBank[index];
+    }
+    output.append(state.numberBank.value);
+}
+
+// add event listener for if button 1 is clicked, sort first one in array
+function sortOneNum(event) {
+    console.log("YOO")
+    event.preventDefault()
+    const num = numberBank[0];
+    if (num % 2 === 0) {
+        state.evens.push(num)//add to evens list.
+    } else
+        state.odds.push(num);
+}
+
+function sortAll(event) {
+    event.preventDefault()
+    console.log("yaaa")
+    for (let index = 0; index < numberBank.length; index++) {
+        const num = numberBank[0];
+        if (num % 2 === 0) {
+            state.evens.push(num)//add to evens list.
+        } else
+            state.odds.push(num);
+    }
+}
+// add event listener for if all selected
+// make function for odds/ evens --- DONE
